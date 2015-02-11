@@ -527,6 +527,11 @@ typedef struct
 	int team;
 	int scoreflags;
 	int respawnsLeft;
+#ifdef FEATURE_RATING
+	// skill rating
+	float mu;
+	float sigma;
+#endif
 } score_t;
 
 // each client has an associated clientInfo_t
@@ -1175,6 +1180,17 @@ typedef struct
 
 	specName_t specOnScreenNames[MAX_CLIENTS];
 
+#ifdef FEATURE_RATING
+	// skill rating
+	float mu[MAX_CLIENTS];
+	float sigma[MAX_CLIENTS];
+	//float axisProb;       // FIXME: win probability
+	//float alliesProb;
+
+	// scoreboard
+	int scoresDownTime;
+	int scoreToggleTime;
+#endif
 } cg_t;
 
 #define MAX_LOCKER_DEBRIS   5
@@ -2023,7 +2039,6 @@ typedef struct cgs_s
 	int fixedphysics;
 	int fixedphysicsfps;
 	int pronedelay;
-
 } cgs_t;
 
 //==============================================================================
@@ -2233,6 +2248,15 @@ extern vmCvar_t cg_fontScaleCN;
 
 // unlagged optimized prediction
 extern vmCvar_t	cg_optimizePrediction;
+
+#ifdef FEATURE_RATING
+// ratings scoreboard
+extern vmCvar_t cg_scoreboard;
+
+// scoreboard
+#define SCOREBOARD_XP    0
+#define SCOREBOARD_SR    1
+#endif
 
 // local clock flags
 #define LOCALTIME_ON                0x01

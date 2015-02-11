@@ -313,6 +313,11 @@ vmCvar_t cg_fontScaleCN;
 // unlagged optimized prediction
 vmCvar_t cg_optimizePrediction;
 
+#ifdef FEATURE_RATING
+// ratings scoreboard
+vmCvar_t cg_scoreboard;
+#endif
+
 typedef struct
 {
 	vmCvar_t *vmCvar;
@@ -529,8 +534,12 @@ cvarTable_t cvarTable[] =
 	{ &cg_fontScaleSP,           "cg_fontScaleSP",           "0.22",  CVAR_ARCHIVE                 }, // SidePrint
 	{ &cg_fontScaleCP,           "cg_fontScaleCP",           "0.22",  CVAR_ARCHIVE                 }, // CenterPrint
 	{ &cg_fontScaleCN,           "cg_fontScaleCN",           "0.25",  CVAR_ARCHIVE                 }, // CrossName
-	
+
 	{ &cg_optimizePrediction,    "cg_optimizePrediction",    "1",     CVAR_ARCHIVE                 }, // unlagged optimized prediction
+
+#ifdef FEATURE_RATING
+	{ &cg_scoreboard,            "cg_scoreboard",            "0",     CVAR_ARCHIVE                 },
+#endif
 };
 
 int      cvarTableSize = sizeof(cvarTable) / sizeof(cvarTable[0]);
@@ -1820,7 +1829,7 @@ static void CG_RegisterGraphics(void)
 
 	// FIXME - find a better sound
 	cgs.media.hflakWeaponSnd = trap_S_RegisterSound("sound/vehicles/misc/20mm_fire.wav", qfalse);
-	
+
 	cgs.media.minePrimedSound = trap_S_RegisterSound("sound/weapons/landmine/mine_on.wav", qfalse);
 
 	// wall marks
