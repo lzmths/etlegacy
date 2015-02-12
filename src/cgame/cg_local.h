@@ -597,6 +597,12 @@ typedef struct clientInfo_s
 	int timeAxis;
 	int timeAllies;
 
+#ifdef FEATURE_RATING
+	// skill rating
+	float mu;
+	float sigma;
+#endif
+
 #ifdef FEATURE_MULTIVIEW
 	// per client MV ps info
 	int ammo;
