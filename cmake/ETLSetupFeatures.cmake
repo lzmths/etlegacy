@@ -201,6 +201,10 @@ if(BUILD_MOD)
 		add_definitions(-DFEATURE_MULTIVIEW)
 	endif(FEATURE_MULTIVIEW)
 
+	if(FEATURE_RATING)
+		add_definitions(-DFEATURE_RATING)
+	endif(FEATURE_RATING)
+
 	if(FEATURE_LUA)
 		if(NOT BUNDLED_LUA)
 			find_package(Lua 5.3 REQUIRED)
