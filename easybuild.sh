@@ -199,6 +199,9 @@ parse_commandline() {
 		elif [ "$var" = "-noupdate" ]; then
 			einfo "Will disable autoupdate"
 			FEATURE_AUTOUPDATE=0
+		elif [ "$var" = "-rating" ]; then
+			einfo "Will enable skill rating"
+			FEATURE_RATING=1
 		else
 			# drop the script commands from the result
 			for index in ${!easy_keys[*]}
@@ -256,6 +259,7 @@ generate_configuration() {
 	FEATURE_MULTIVIEW=${FEATURE_MULTIVIEW:-0}
 	FEATURE_ANTICHEAT=${FEATURE_ANTICHEAT:-1}
 	FEATURE_LIVEAUTH=${FEATURE_LIVEAUTH:-1}
+	FEATURE_RATING=${FEATURE_RATING:-0}
 	FEATURE_AUTOUPDATE=${FEATURE_AUTOUPDATE:-0}
 	FEATURE_OMNIBOT=${FEATURE_OMNIBOT:-1}
 	INSTALL_OMNIBOT=${INSTALL_OMNIBOT:-1}
@@ -289,6 +293,7 @@ generate_configuration() {
 		-DFEATURE_GETTEXT=${FEATURE_GETTEXT}
 		-DFEATURE_JANSSON=${FEATURE_JANSSON}
 		-DFEATURE_LIVEAUTH=${FEATURE_LIVEAUTH}
+		-DFEATURE_RATING=${FEATURE_RATING}
 		-DFEATURE_AUTOUPDATE=${FEATURE_AUTOUPDATE}
 		-DFEATURE_RENDERER2=${FEATURE_RENDERER2}
 		-DRENDERER_DYNAMIC=${RENDERER_DYNAMIC}
@@ -506,7 +511,7 @@ print_help() {
 	ehead "help - print this help"
 	echo
 	einfo "Properties"
-	ehead "-64, -debug, -clang, -r2, -dynamic, -systemlib, -noob, --noupdate"
+	ehead "-64, -debug, -clang, -r2, -dynamic, -systemlib, -noob, --noupdate, -rating"
 	echo
 }
 
