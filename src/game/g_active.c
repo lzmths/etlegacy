@@ -2090,7 +2090,7 @@ void ClientEndFrame(gentity_t *ent)
 {
 	int i, frames;
 
-	// don't count skulled player time
+	// count player time
 	if (g_gamestate.integer == GS_PLAYING && !(ent->client->ps.persistant[PERS_RESPAWNS_LEFT] == 0 && (ent->client->ps.pm_flags & PMF_LIMBO)))
 	{
 		if (ent->client->sess.sessionTeam == TEAM_AXIS)
