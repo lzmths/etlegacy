@@ -879,8 +879,7 @@ static int WM_TeamScoreboard(int x, int y, team_t team, float fade, int maxrows,
 			}
 			else if (cg_scoreboard.integer == SCOREBOARD_SR)
 			{
-				// FIXME: add cg.axisProb
-				s = va("%s [%.1f%%] (%d %s)", CG_TranslateString("AXIS"), 0.f, cg.teamPlayers[team], cg.teamPlayers[team] < 2 ? CG_TranslateString("PLAYER") : CG_TranslateString("PLAYERS"));
+				s = va("%s [%.1f%%] (%d %s)", CG_TranslateString("AXIS"), cg.axisProb, cg.teamPlayers[team], cg.teamPlayers[team] < 2 ? CG_TranslateString("PLAYER") : CG_TranslateString("PLAYERS"));
 			}
 
 			CG_Text_Paint_Ext(x, y + 13, 0.25f, 0.25f, tclr, s, 0, 0, 0, &cgs.media.limboFont1);
@@ -897,8 +896,7 @@ static int WM_TeamScoreboard(int x, int y, team_t team, float fade, int maxrows,
 			}
 			else if (cg_scoreboard.integer == SCOREBOARD_SR)
 			{
-				// FIXME: add cg.axisProb
-				s = va("%s [%.1f%%] (%d %s)", CG_TranslateString("ALLIES"), 0.f, cg.teamPlayers[team], cg.teamPlayers[team] < 2 ? CG_TranslateString("PLAYER") : CG_TranslateString("PLAYERS"));
+				s = va("%s [%.1f%%] (%d %s)", CG_TranslateString("ALLIES"), cg.alliesProb, cg.teamPlayers[team], cg.teamPlayers[team] < 2 ? CG_TranslateString("PLAYER") : CG_TranslateString("PLAYERS"));
 			}
 
 			CG_Text_Paint_Ext(x, y + 13, 0.25f, 0.25f, tclr, s, 0, 0, 0, &cgs.media.limboFont1);

@@ -1173,6 +1173,11 @@ typedef struct level_locals_s
 
 	config_t config;            // etpro style config
 
+#ifdef FEATURE_RATING
+	// skill rating
+	float alliesProb;
+	float axisProb;
+#endif
 } level_locals_t;
 
 typedef struct
@@ -2170,6 +2175,7 @@ unsigned int G_weapStatIndex_MOD(unsigned int iWeaponMOD);
 #define EPSILON 0.f             // draw margin (assumed null)
 
 void G_CalculateSkillRatings();
+float G_CalculateWinProbability(int team);
 #endif
 
 // g_stats.c
