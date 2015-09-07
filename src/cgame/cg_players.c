@@ -288,6 +288,9 @@ void CG_NewClientInfo(int clientNum)
 	// skill rating
 	v              = Info_ValueForKey(configstring, "sr");
 	newInfo.rating = atof(v);
+
+	v                   = Info_ValueForKey(configstring, "dsr");
+	newInfo.deltaRating = atof(v);
 #endif
 
 	v                 = Info_ValueForKey(configstring, "ref");

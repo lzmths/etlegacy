@@ -65,13 +65,13 @@ void G_WriteClientSessionData(gclient_t *client, qboolean restart)
 
 #ifdef FEATURE_MULTIVIEW
 #ifdef FEATURE_RATING
-	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %i %i %i %i %i %i %i %i",
+	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %f %f %i %i %i %i %i %i %i %i",
 #else
 	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i",
 #endif
 #else
 #ifdef FEATURE_RATING
-	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %i %i %i %i %i %i",
+	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %f %f %i %i %i %i %i %i",
 #else
 	s = va("%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i",
 #endif
@@ -100,6 +100,8 @@ void G_WriteClientSessionData(gclient_t *client, qboolean restart)
 #ifdef FEATURE_RATING
 	       client->sess.mu,
 	       client->sess.sigma,
+	       client->sess.oldmu,
+	       client->sess.oldsigma,
 #endif
 #ifdef FEATURE_MULTIVIEW
 	       (mvc & 0xFFFF),
@@ -251,13 +253,13 @@ void G_ReadSessionData(gclient_t *client)
 
 #ifdef FEATURE_MULTIVIEW
 #ifdef FEATURE_RATING
-	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %i %i %i %i %i %i %i %i",
+	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %f %f %i %i %i %i %i %i %i %i",
 #else
 	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i",
 #endif
 #else
 #ifdef FEATURE_RATING
-	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %i %i %i %i %i %i",
+	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %f %f %f %f %i %i %i %i %i %i",
 #else
 	sscanf(s, "%i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i %i",
 #endif
@@ -286,6 +288,8 @@ void G_ReadSessionData(gclient_t *client)
 #ifdef FEATURE_RATING
 	       &client->sess.mu,
 	       &client->sess.sigma,
+	       &client->sess.oldmu,
+	       &client->sess.oldsigma,
 #endif
 #ifdef FEATURE_MULTIVIEW
 	       &mvc_l,

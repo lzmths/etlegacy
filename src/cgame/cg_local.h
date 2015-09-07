@@ -599,6 +599,7 @@ typedef struct clientInfo_s
 #ifdef FEATURE_RATING
 	// skill rating
 	float rating;
+	float deltaRating;
 #endif
 
 #ifdef FEATURE_MULTIVIEW
@@ -1187,6 +1188,7 @@ typedef struct
 #ifdef FEATURE_RATING
 	// skill rating
 	float rating[MAX_CLIENTS];
+	float deltaRating[MAX_CLIENTS];
 	float axisProb;
 	float alliesProb;
 
