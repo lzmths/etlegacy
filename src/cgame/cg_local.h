@@ -529,8 +529,7 @@ typedef struct
 	int respawnsLeft;
 #ifdef FEATURE_RATING
 	// skill rating
-	float mu;
-	float sigma;
+	float rating;
 #endif
 } score_t;
 
@@ -599,8 +598,7 @@ typedef struct clientInfo_s
 
 #ifdef FEATURE_RATING
 	// skill rating
-	float mu;
-	float sigma;
+	float rating;
 #endif
 
 #ifdef FEATURE_MULTIVIEW
@@ -1188,8 +1186,7 @@ typedef struct
 
 #ifdef FEATURE_RATING
 	// skill rating
-	float mu[MAX_CLIENTS];
-	float sigma[MAX_CLIENTS];
+	float rating[MAX_CLIENTS];
 	float axisProb;
 	float alliesProb;
 
