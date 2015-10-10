@@ -4,7 +4,7 @@
 if [[ "$OSTYPE" == "linux-gnu" ]]; then
 	# install needed packages
 	echo "Travis running linux build"
-	echo 'deb http://archive.ubuntu.com/ubuntu trusty main' | sudo tee /etc/apt/sources.list.d/ubuntu-trusty.list
+	echo 'deb http://archive.ubuntu.com/ubuntu wily main' | sudo tee /etc/apt/sources.list.d/ubuntu-wily.list
   sudo apt-key adv --recv-keys --keyserver keyserver.ubuntu.com 40976EAF437D05B5
   sudo apt-get update -qq
   sudo apt-get install -q -t precise pkg-config nasm libgl1-mesa-dev libasound2-dev pulseaudio m4
